@@ -1,0 +1,31 @@
+[
+	{
+		"hallId": 1,
+		"hallName": "1号厅",
+		"hallMemo": "1号厅备注"
+	}, {
+		"hallId": 2,
+		"hallName": "2号厅",
+		"hallMemo": "2号厅备注"
+	}, {
+		"hallId": 3,
+		"hallName": "3号厅",
+		"hallMemo": "3号厅备注"
+	}, {
+		"hallId": 4,
+		"hallName": "4号厅",
+		"hallMemo": "4号厅备注"
+	}, {
+		"hallId": 5,
+		"hallName": "5号厅",
+		"hallMemo": "5号厅备注"
+	}, {
+		"hallId": 6,
+		"hallName": "6号厅",
+		"hallMemo": "6号厅备注"
+	}, {
+		"hallId": 7,
+		"hallName": "7号厅",
+		"hallMemo": "7号厅备注"
+	}
+]

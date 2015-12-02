@@ -1,0 +1,28 @@
+[
+	{
+		"filmId": 1,
+		"filmName": "精灵旅社1",
+		"filmState": "pass",
+		"duration": 120,
+		"filmMemo": "3D",
+		"filmType": "双人票"
+	}, {
+		"filmId": 2,
+		"filmName": "精灵旅社2",
+		"filmState": "pass",
+		"duration": 90,
+		"filmMemo": "备注信息"
+	}, {
+		"filmId": 3,
+		"filmName": "精灵旅社3",
+		"filmState": "pass",
+		"duration": 180,
+		"filmMemo": "备注信息"
+	}, {
+		"filmId": 4,
+		"filmName": "精灵旅社4",
+		"filmState": "pass",
+		"duration": 110,
+		"filmMemo": "备注信息"
+	}
+]

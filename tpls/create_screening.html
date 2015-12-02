@@ -1,0 +1,36 @@
+{{if joinflag=="true"}}
+<div class="filmInfo_area_mask"  data-joinid="{{joinid}}" title="{{joinid}}" style="left:{{beginTime |setCCLeft}}px; width:{{duration |setCCWidth}}px; height: 70px;" ></div>
+{{/if}}
+<div data-joinflag="{{joinflag}}"
+     {{if joinid}}
+     data-joinid="{{joinid}}"
+     {{else}}
+     {{/if}}
+     data-plancode="{{planCode}}" data-status="{{status}}"
+     data-hallid="hall_{{hallCode}}" data-begintime="{{beginTime}}" data-endtime="{{endTime}}"
+     data-duration="{{duration}}"
+     class="filmInfo_area
+     {{if status}}
+			{{status}}
+			{{else}}
+			{{/if}}"
+     style="left:{{beginTime |setCCLeft}}px; width:{{duration |setCCWidth}}px; height: 70px;">
+	<i class="filmType">{{filmMemo}}</i>
+
+	<p title="{{filmName}} ">{{filmName}}</p>
+
+	<p title="开始时间：{{beginTime}}结束时间：{{endTime}}时长：{{duration}}分">{{beginTime |showShortTime}} ~ {{endTime |showShortTime}}({{duration}}分)</p>
+
+	<p title="票价政策：双人票标准价：{{priceStandard}}元最低价：{{priceLower}}元">双人票({{priceStandard}},{{priceLower}})</p>
+
+	<p title="售票张数：0张票房收入：0元上座率：0.00%">0/0/0.00%</p>
+	<ul>
+		{{if status=="salecheck"||status=="saleing"}}
+		<li class="f_handle" title="设置" style="background-size: 80% 80%;"></li>
+		<li class="f_mod" title="修改" style="background-size: 80% 80%;"></li>
+		{{else if status=="no_save"||status=="unsubmit"||status=="unchecked"}}
+		<li class="f_del" title="删除" style="background-size: 80% 80%;"></li>
+		<li class="f_mod" title="修改" style="background-size: 80% 80%;"></li>
+		{{/if}}
+	</ul>
+</div>

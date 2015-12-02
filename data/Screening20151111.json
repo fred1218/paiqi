@@ -1,0 +1,31 @@
+{
+	"cinema": "中影",
+	"queryDate": "2015-11-11",
+	"changcis": [
+		{
+			"hallId": "1",
+			"hallCode": "55092a58-d57a-4eab-b719-f221b87aab4e",
+			"screening": [
+				{
+					"planCode": "CC20151000000220",
+					"filmId": 1,
+					"status": "unsubmit",
+					"filmMemo": "3D",
+					"duration": 170,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-11 06:20",
+					"endTime": "2015-11-11 09:10",
+					"joinflag": "false"
+				}
+			]
+		}, {
+			"hallId": "2",
+			"hallCode": "55092a58-d57a-4eab-b719-f211b87aab4e",
+			"screening": []
+		}, {
+			"hallId": "3",
+			"hallCode": "55092a58-d57a-4eab-b719-f231b87aab4e",
+			"screening": []
+		}
+	]
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script src="hashmap.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var map = new HashMap();
+			var map2 = new HashMap();
+			map.set('1', {
+				name: "zhangdan1"
+			});
+			map.set('2', {
+				name: "zhangdan2"
+			});
+			var key = {
+				age: 1
+			};
+			map.set(key, {
+				"addr": "shanghai"
+			});
+			console.debug(map.get(key));
+			map2.set('3', "zhangdan3");
+			var map3 = map.clone();
+			map3.set('2', "|||");
+			map3.copy(map2);
+			map.clear();
+			console.debug(map, map3);
+			console.debug(map.type("1"));
+		</script>
+	</body>
+
+</html>

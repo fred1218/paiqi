@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>放映计划编排</title>
+	<link rel="stylesheet" type="text/css" href="css/hall_fiml.css"/>
+	<link rel="stylesheet" type="text/css" href="css/core.css"/>
+	<link rel="stylesheet" type="text/css" href="js/artDialog/css/ui-dialog.css"/>
+
+	<script src="js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/artDialog/dist/dialog-min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/template.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/eventproxy.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.mousewheel.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/moment/moment.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/moment/zh-cn.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script id="tpl_move_film" type="text/html">
+		<p>{{filmName}}</p>
+		<p>{{filmMins}}分钟</p>
+		<p>{{filmType}}</p>
+		<p>0/0/0</p>
+		<p style="display:none;">0412020551000317</p>
+		<p style="display:none;">000011102014</p>
+	</script>
+</head>
+
+<body oncontextmenu='return false'>
+<div class="page unselectable" style="position: relative;top: 10px;">
+	<div id="container" class="page_content">
+		<div id="y_coord" style="left: 300px;"></div>
+		<div id="y2_coord" style="left: 300px;"></div>
+		<div id="x_coord" style="top: 300px;"></div>
+		<div id="time_area" style="left: 300px;top: 60px;width: 120px;">16:35</div>
+		<div id="move_film" style="width:60px;left: 0;top: 0;"></div>
+
+		<div style="overflow: auto;" id="operatePanel">
+			<div class="conditionHeader">
+				<div class="arrangeCondition">
+					<div id="">
+						<button>今天</button>
+						<button>明天</button>
+						<button>后天</button>
+					</div>
+					<button id="show_edit_btn">编辑</button>
+					<button>刷新</button>
+				</div>
+				<div class="arrangeFilmlist">
+					<div class="grid">
+						<div class="filmRes">电影1</div>
+						<div class="filmRes">电影2</div>
+						<div class="filmRes">电影3</div>
+						<div class="filmRes">电影4</div>
+						<div class="filmRes">电影5</div>
+						<div class="filmRes">电影6</div>
+						<div class="filmRes">电影7</div>
+					</div>
+				</div>
+				<div class="arrangePricepolicy"></div>
+				<div class="arrangeSellType"></div>
+			</div>
+			<div class="film_arrange">
+				<div class="arrangeHeader" id="arrangeHeader">
+					<div class="date_hall"></div>
+					<div class="time_ruler">
+						<!--划分时间刻度-->
+					</div>
+				</div>
+				<div id="layoutScroll">
+					<div class="drag_area">
+						<div id="ban_edit">禁止编辑</div>
+						<div id="system_time"></div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="toolbar">
+		<div id="leftbar">
+			场次精度设置
+			<select id="setStep">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>分钟
+			<button>清空当前排期场次</button>
+			<button>打印</button>
+			<button>复制</button>
+			<button id="showGraCase">图例说明</button>
+		</div>
+		<div id="rightbar">
+			<button id="commit_to_check">提交审核</button>
+			<button id="check_screening_data">通过审核</button>
+			<button id="setLianchang">设置连场</button>
+			<button id="removeLianchang">解除连场</button>
+			<button id="getLatestSdata">获取最新场次数据</button>
+		</div>
+	</div>
+</div>
+<div id="showGraCase_content" style="display: none;" class="GraCase_content">
+	<div class="gracase no_save">未保存</div>
+	<div class="gracase unsubmit">计划保存</div>
+	<div class="gracase unchecked">待审核</div>
+	<div class="gracase checked">已审核</div>
+	<div class="gracase salecheck">可销售</div>
+	<div class="gracase saleing">销售中</div>
+	<div class="gracase salestop">停售</div>
+	<div class="gracase planend">放映结束</div>
+	<div class="gracase reported">已上报</div>
+	<div class="gracase forbid">禁止排片</div>
+	<div class="gracase join_lc">连场场次</div>
+</div>
+<div id="showLatestScreeningData" style="display: none;" class="GraCase_content">
+</div>
+<div id="changciOpDia" style="display: none;" class="GraCase_content">
+	编辑
+</div>
+<script src="js/lib/require.js"></script>
+<script src="js/notie.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/TimeRuler.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/**
+	 *检测当前checkData是否能过插入到数组集合
+	 * @param hallScreeningData数组集合
+	 * @param checkData待校验的数据
+	 * @returns {boolean}
+	 */
+	function checkIfCanDrop(hallScreeningData, checkData) {
+		//时间是线性的，比较数据索引即可
+		var arrs = hallScreeningData['screening'];
+		var beginArrs = _.pluck(arrs, 'beginTime'),
+				bs = _.map(beginArrs, function (v, k) {
+					return moment(v);
+				});
+
+		var endArrs = _.pluck(arrs, 'endTime'),
+				es = _.map(endArrs, function (v, k) {
+					return moment(v);
+				});
+
+		var tarr = bs.concat(es);
+		var bm = moment(checkData.beginTime), em = moment(checkData.endTime);
+		tarr.push(bm);
+		tarr.push(em);
+		var tarrSorted = _.sortBy(tarr, function (v) {
+			return v;
+		});
+		var bidx = _.indexOf(tarrSorted, bm);
+		var eidx = _.indexOf(tarrSorted, em);
+		//还得检测planCode的唯一性
+		if ((bidx + 1 === eidx) && (bidx % 2 == 0)) {
+			return true;
+		}
+		return false;
+	}
+	//绘制时间轴
+	var time_ruler_opt = {
+		queryDate: '2015-11-10',
+		rulerEl: '.time_ruler',
+		start: 6, //起点是6点
+		space: 10, //一个间隔是5分钟
+		per_pix: 1 //1px是1分钟
+	};
+	var time_ruler = new TimeRuler(time_ruler_opt);
+	var paiqiConfig = {
+		paiqi: {
+			editable: true,
+			container: '#container',
+			canbeMoved: function (moveFunc, checkData) {
+				//TODO 1后端根据点击场次时获取到的checkData查询此场次是否可以拖动.还有连场是否能拖动
+				//2可能用不到，因为我可以根据状态直接去判断是否可以移动,也可以做成前端判断在这里
+				//3有些前后状态决定是否可置放
+				var st = checkData.status,
+						isMovable = false;
+				if (st == "unsubmit") {
+					//当前我设置的是unsubmit的可以move，你们可以随意改
+					isMovable = true;
+				}
+				if (isMovable) {
+					moveFunc(isMovable);
+				}
+			},
+			canDrop: function (doDropFunc, hallScreeningData, checkData) {
+				var ifCanDrop = checkIfCanDrop(hallScreeningData, checkData);
+				doDropFunc(ifCanDrop);
+			},
+			generatePlanCode: function (scrData) {
+				//设置planCode,场次的唯一性
+				scrData.planCode = 'CC2015' + (new Date).valueOf();
+			},
+			afterPositionChanged: function (type, newScreening) {
+				console.debug('入库数据:(' + type + ')', "数据：", newScreening);
+			},
+			deleteSomeChangci: function (param, delFunc) {
+				console.log('根据场次删除:', param);
+				var result = true;
+				delFunc(result);
+			},
+			stopSaleChangci: function (param, stopFunc) {
+				console.log('根据场次停止销售:', param);
+				var result = true;
+				stopFunc(result);
+			}
+		},
+		moveFilmBox: {
+			trigger: '.filmRes', //触犯显示moveFilm的选择器
+			$el: $('#move_film'), //moveFilm这个jq对象
+			step: 1, //歩进多少[1-5]
+			onFilmsResSelected: function ($el, transforData) {
+				//TODO 当点击电影资源的时候生成场次数据，不包含plancode
+				console.log('==获取电影数据==');
+				var _data = {
+					"filmId": '12598Po1',
+					"status": "unsubmit",
+					"filmMemo": "3D",
+					"duration": 120,
+					"filmName": "精灵旅社1",
+					"joinflag": "false"
+				};
+				transforData(_data);
+			},
+		},
+		screening: {
+			trigger: '.filmInfo_area', //模块选择权
+		}
+	};
+	$.ajax('data/Screening.json').done(function (data) {
+		var dataWithLianchang = calculateLianChang(data);
+		//根据beginTime设置每个场次的起始位置
+		readTemplate('tpls/hall_screening.html').done(function (renderFunc) {
+			var html = renderFunc(dataWithLianchang);
+			$('.drag_area').append(html);
+			//运行控件
+			var app = new App(paiqiConfig, time_ruler, dataWithLianchang);
+			//					app.band_edit();
+			$('#setStep').on('change', function () {
+				app.setStep($(this).val());
+			});
+			$('#getLatestSdata').on('click', function (ev) {
+				var el = document.getElementById("showLatestScreeningData");
+				$(el).html("<pre>" + JSON.stringify(app.getScreeningData(), null, 4) + "</pre>");
+				var d = dialog({
+					cancel: true,
+					cancelValue: '关闭',
+					quickClose: true,
+					content: el
+				});
+				d.showModal();
+
+				console.debug(app.getScreeningData());
+			});
+			$('#show_edit_btn').on('click', function () {
+				app.show_edit();
+			});
+			$('#setLianchang').on('click', function (ev) {
+				var stData = app.getLCData();
+				if (stData) {
+					var d = dialog({
+						width: 460,
+						title: '设置连场',
+						content: '<pre>' + JSON.stringify(stData, null, 4) + '</pre>',
+						okValue: '保存连场',
+						ok: function () {
+							this.statusbar('保存连场成功!');
+							//TODO 去后端设置连场
+							var isSuccessful = true;
+							var joinid = (new Date).valueOf();
+							app.setLianChang(isSuccessful, stData, joinid);
+							notie.alert(1, "设置连场" + joinid + "成功！", 2)
+						},
+						cancelValue: '关闭',
+						cancel: true, //开启弹窗的关闭功能的两个按钮
+						cancelDisplay: true, //显示默认的取消按钮
+					});
+					d.showModal();
+				} else {
+					notie.alert(3, '请按住Ctrl进行选择，只有相邻的两个或两个以上的场次才能设置连场！', 2);
+				}
+			});
+			$('#removeLianchang').on('click', function (ev) {
+				var joinid = '1448957781194';
+				var isSuccessful = true;
+				var $el = $('.filmInfo_area_mask[data-joinid="' + joinid + '"]');
+				app.removeLianChang(isSuccessful, joinid, $el);
+				notie.alert(1, "解除连场" + joinid + "成功！", 2)
+
+			});
+		});
+	});
+	$('#showGraCase').on('click', function (ev) {
+		var el = document.getElementById("showGraCase_content");
+		var d = dialog({
+			width: 600,
+			height: 400,
+			title: '图例说明',
+			quickClose: true,
+			content: el
+		});
+		d.showModal();
+	});
+
+	$('#commit_to_check').on('click', function () {
+	});
+	$('#check_screening_data').on('click', function () {
+	});
+</script>
+</body>
+
+</html>

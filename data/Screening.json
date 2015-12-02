@@ -1,0 +1,391 @@
+{
+	"cinema": "中影",
+	"queryDate": "2015-11-10",
+	"changcis": [
+		{
+			"hallId": "1",
+			"hallCode": "55092a58-d57a-4eab-b719-f221b87aab4e",
+			"screening": [
+				{
+					"planCode": "CC20151000000220",
+					"filmId": 1,
+					"status": "unsubmit",
+					"filmMemo": "3D",
+					"duration": 170,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 06:20",
+					"endTime": "2015-11-10 09:10",
+					"joinflag": "true",
+					"joinid": "1448957781194"
+				}, {
+					"planCode": "CC20151000000221",
+					"filmId": 2,
+					"status": "unsubmit",
+					"filmMemo": "2D",
+					"duration": 50,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 09:40",
+					"endTime": "2015-11-10 10:30",
+					"joinflag": "true",
+					"joinid": "1448957781194"
+				}, {
+					"planCode": "CC20151000000222",
+					"filmId": 3,
+					"status": "unsubmit",
+					"filmMemo": "3D-IMAX",
+					"duration": 120,
+					"filmName": "精灵旅社1|精灵旅社2|精灵旅社3",
+					"beginTime": "2015-11-10 12:00",
+					"endTime": "2015-11-10 14:00",
+					"joinflag": "true",
+					"joinid": "1448957781196"
+				}, {
+					"planCode": "CC20151000000223",
+					"filmId": 4,
+					"status": "unsubmit",
+					"filmMemo": "3D",
+					"duration": 130,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 15:20",
+					"endTime": "2015-11-10 17:30",
+					"joinflag": "true",
+					"joinid": "1448957781196"
+				}
+			]
+		}, {
+			"hallId": "2",
+			"hallCode": "55092a58-d57a-4eab-b719-f111b87aab4e",
+			"screening": [
+				{
+					"planCode": "CC20151000000224",
+					"filmId": 1,
+					"filmMemo": "3D",
+					"duration": 140,
+					"status": "unchecked",
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 07:10",
+					"endTime": "2015-11-10 09:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000225",
+					"filmId": 2,
+					"status": "unsubmit",
+					"filmMemo": "2D",
+					"duration": 50,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 09:40",
+					"endTime": "2015-11-10 10:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000226",
+					"filmId": 3,
+					"status": "unsubmit",
+					"filmMemo": "3D-IMAX",
+					"duration": 110,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 10:40",
+					"endTime": "2015-11-10 12:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000227",
+					"filmId": 4,
+					"status": "unsubmit",
+					"filmMemo": "3D",
+					"duration": 130,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 15:20",
+					"endTime": "2015-11-10 17:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000228",
+					"filmId": 4,
+					"status": "unsubmit",
+					"filmMemo": "3D",
+					"duration": 190,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 22:20",
+					"endTime": "2015-11-11 01:30",
+					"joinflag": "false"
+				}
+			]
+		}, {
+			"hallId": "3",
+			"hallCode": "33092a58-d57a-4eab-b719-f221b87aab4e",
+			"screening": [
+				{
+					"planCode": "CC20151000000229",
+					"filmId": 1,
+					"status": "reported",
+					"filmMemo": "3D",
+					"duration": 195,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 06:20",
+					"endTime": "2015-11-10 09:35",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000231",
+					"filmId": 2,
+					"status": "unsubmit",
+					"filmMemo": "2D",
+					"duration": 50,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 09:40",
+					"endTime": "2015-11-10 10:30",
+					"joinflag": "true",
+					"joinid": "1448957781114"
+				}, {
+					"planCode": "CC20151000000232",
+					"filmId": 3,
+					"status": "unsubmit",
+					"filmMemo": "3D-IMAX",
+					"duration": 110,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 10:40",
+					"endTime": "2015-11-10 12:30",
+					"joinflag": "true",
+					"joinid": "1448957781114"
+				}, {
+					"planCode": "CC20151000000233",
+					"filmId": 4,
+					"filmMemo": "3D",
+					"status": "salecheck",
+					"duration": 130,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 15:20",
+					"endTime": "2015-11-10 17:30",
+					"joinflag": "false"
+				}
+			]
+		}, {
+			"hallId": "4",
+			"hallCode": "55092a58-1233-4eab-b719-f221b87aab4e",
+			"screening": [
+				{
+					"planCode": "CC20151000000240",
+					"filmId": 1,
+					"status": "unsubmit",
+					"filmMemo": "3D",
+					"duration": 70,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 06:00",
+					"endTime": "2015-11-10 09:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000241",
+					"filmId": 2,
+					"status": "unsubmit",
+					"filmMemo": "2D",
+					"duration": 50,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 09:40",
+					"endTime": "2015-11-10 10:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000242",
+					"filmId": 3,
+					"status": "unsubmit",
+					"filmMemo": "3D-IMAX",
+					"duration": 110,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 10:40",
+					"endTime": "2015-11-10 12:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000243",
+					"filmId": 4,
+					"status": "unsubmit",
+					"filmMemo": "3D",
+					"duration": 130,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 15:20",
+					"endTime": "2015-11-10 17:30",
+					"joinflag": "false"
+				}
+			]
+		}, {
+			"hallId": "5",
+			"hallCode": "55092a58-d57a-4eab-b719-a6d1b87aab4e",
+			"screening": [
+				{
+					"planCode": "CC20151000000250",
+					"filmId": 1,
+					"status": "no_save",
+					"filmMemo": "3D",
+					"duration": 70,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 08:20",
+					"endTime": "2015-11-10 09:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000251",
+					"filmId": 2,
+					"filmMemo": "2D",
+					"status": "checked",
+					"duration": 50,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 09:40",
+					"endTime": "2015-11-10 10:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000252",
+					"filmId": 3,
+					"status": "salecheck",
+					"filmMemo": "3D-IMAX",
+					"duration": 110,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 10:40",
+					"endTime": "2015-11-10 12:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000253",
+					"filmId": 4,
+					"status": "saleing",
+					"filmMemo": "3D",
+					"duration": 130,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 15:20",
+					"endTime": "2015-11-10 17:30",
+					"joinflag": "false"
+				}
+			]
+		}, {
+			"hallId": "6",
+			"hallCode": "55092a58-d57a-4eab-3319-f221b87aab4e",
+			"screening": [
+				{
+					"planCode": "CC20151000000260",
+					"filmId": 1,
+					"status": "salestop",
+					"filmMemo": "3D",
+					"duration": 70,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 08:20",
+					"endTime": "2015-11-10 09:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000261",
+					"filmId": 2,
+					"status": "planend",
+					"filmMemo": "2D",
+					"duration": 50,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 09:40",
+					"endTime": "2015-11-10 10:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000262",
+					"filmId": 3,
+					"status": "reported",
+					"filmMemo": "3D-IMAX",
+					"duration": 110,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 10:40",
+					"endTime": "2015-11-10 12:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000263",
+					"filmId": 4,
+					"status": "forbid",
+					"filmMemo": "3D",
+					"duration": 130,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 15:20",
+					"endTime": "2015-11-10 17:30",
+					"joinflag": "false"
+				}
+			]
+		}, {
+			"hallId": "7",
+			"hallCode": "55092348-d57a-4eab-b719-f221b87aab4e",
+			"screening": [
+				{
+					"planCode": "CC20151000000270",
+					"filmId": 1,
+					"status": "unsubmit",
+					"filmMemo": "3D",
+					"duration": 70,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 08:20",
+					"endTime": "2015-11-10 09:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000271",
+					"filmId": 2,
+					"status": "unsubmit",
+					"filmMemo": "2D",
+					"duration": 50,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 09:40",
+					"endTime": "2015-11-10 10:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000272",
+					"filmId": 3,
+					"status": "unsubmit",
+					"filmMemo": "3D-IMAX",
+					"duration": 110,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 10:40",
+					"endTime": "2015-11-10 12:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000273",
+					"filmId": 4,
+					"status": "unsubmit",
+					"filmMemo": "3D",
+					"duration": 130,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 15:20",
+					"endTime": "2015-11-10 17:30",
+					"joinflag": "false"
+				}
+			]
+		}, {
+			"hallId": "8",
+			"hallCode": "55092a58-d57a-4eab-b719-f221b87aabaa",
+			"screening": [
+				{
+					"planCode": "CC20151000000280",
+					"filmId": 1,
+					"status": "unsubmit",
+					"filmMemo": "3D",
+					"duration": 70,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 08:20",
+					"endTime": "2015-11-10 09:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000281",
+					"filmId": 2,
+					"status": "unsubmit",
+					"filmMemo": "2D",
+					"duration": 50,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 09:40",
+					"endTime": "2015-11-10 10:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000282",
+					"filmId": 3,
+					"status": "unsubmit",
+					"filmMemo": "3D-IMAX",
+					"duration": 110,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 10:40",
+					"endTime": "2015-11-10 12:30",
+					"joinflag": "false"
+				}, {
+					"planCode": "CC20151000000283",
+					"filmId": 4,
+					"status": "unsubmit",
+					"filmMemo": "3D",
+					"duration": 130,
+					"filmName": "精灵旅社1",
+					"beginTime": "2015-11-10 15:20",
+					"endTime": "2015-11-10 17:30",
+					"joinflag": "false"
+				}
+			]
+		}
+	]
+}

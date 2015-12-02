@@ -1,0 +1,46 @@
+{{each changcis as scr i}}
+<div class="hall_arrange">
+	<div class="hall_name">
+		<h3 title="1号厅(157)">{{scr.hallId}}号厅</h3>
+		<div class="operate_icon">
+			<a class="arrange_copy" title="复制"></a>
+			<a class="arrange_delete" title="删除"></a>
+			<a class="arrange_change" title="替换"></a>
+		</div>
+		<div class="sold_info">0/0/0</div>
+	</div>
+	<div class="hall_films_list" id="hall_{{scr.hallCode}}">
+		{{each scr.lcData as lc j}}
+		<div class="filmInfo_area_mask join_lc" data-hallid="hall_{{scr.hallCode}}" data-joinid="{{lc.joinid}}" title="{{lc.joinid}}" style="left:{{lc.beginTime |setCCLeft}}px; width:{{lc.endTime |setLCWidth:lc.beginTime}}px;height: 88px;"></div>
+		{{/each}}
+		{{each scr.screening as cc k}}
+
+		<div data-joinflag="{{cc.joinflag}}" {{if cc.joinid}} data-joinid="{{cc.joinid}}" {{else}} {{/if}} data-plancode="{{cc.planCode}}" data-status="{{cc.status}}" data-hallid="hall_{{scr.hallCode}}" data-begintime="{{cc.beginTime}}" data-endtime="{{cc.endTime}}"
+		data-duration="{{cc.duration}}" class="filmInfo_area
+		{{if cc.status}}
+		{{cc.status}}
+		{{else}}
+		{{/if}}" style="left:{{cc.beginTime |setCCLeft}}px; width:{{cc.duration |setCCWidth}}px; height: 70px;">
+			<i class="filmType">{{cc.filmMemo}}</i>
+
+			<p title="{{cc.filmName}} ">{{cc.filmName}}</p>
+
+			<p title="开始时间：{{cc.beginTime}}结束时间：{{cc.endTime}}时长：{{cc.duration}}分">{{cc.beginTime |showShortTime}} ~ {{cc.endTime |showShortTime}}({{cc.duration}}分)</p>
+
+			<p title="票价政策：双人票标准价：{{cc.priceStandard}}元最低价：{{cc.priceLower}}元">双人票({{cc.priceStandard}},{{cc.priceLower}})</p>
+
+			<p title="售票张数：0张票房收入：0元上座率：0.00%">0/0/0.00%</p>
+			<ul>
+				{{if cc.status=="salecheck"||cc.status=="saleing"}}
+				<li class="f_handle" title="设置" style="background-size: 80% 80%;"></li>
+				<li class="f_mod" title="修改" style="background-size: 80% 80%;"></li>
+				{{else if cc.status=="no_save"||cc.status=="unsubmit"||cc.status=="unchecked"}}
+				<li class="f_del" title="删除" style="background-size: 80% 80%;"></li>
+				<li class="f_mod" title="修改" style="background-size: 80% 80%;"></li>
+				{{/if}}
+			</ul>
+		</div>
+		{{/each}}
+	</div>
+</div>
+{{/each}}
